@@ -11,5 +11,5 @@ export const schemaTypes = [
     workExperience,
     experiences,
     works,
-    testimonials
+    testimonials,
 ]
