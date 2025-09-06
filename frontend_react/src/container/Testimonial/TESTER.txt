@@ -1,0 +1,2 @@
+console.log('Testimonials:', testimonials);
+console.log('Image URL:', urlFor(testimonials[currentIndex]?.imgurl));
