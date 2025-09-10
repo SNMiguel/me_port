@@ -144,7 +144,7 @@ const Header = () => {
                   
                   <div className='resume-actions'>
                     <motion.a 
-                      href='./July_2025_Resume.pdf' 
+                      href='/July_2025_Resume.pdf' 
                       download
                       className='download-btn'
                       whileHover={{ scale: 1.05 }}
