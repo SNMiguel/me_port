@@ -90,7 +90,6 @@ export const profile: Profile = {
   socials: [
     { label: "GitHub", href: "https://github.com/SNMiguel" },
     { label: "LinkedIn", href: "https://linkedin.com/in/migztech" },
-    { label: "Portfolio", href: "https://migztech.vercel.app" },
   ],
 };
 
