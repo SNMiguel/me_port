@@ -42,6 +42,8 @@ const NAV = [
   ["Experience", "experience"],
   ["Projects", "projects"],
   ["Skills", "skills"],
+  ["Leadership", "leadership"],
+  ["Certifications", "certifications"],
   ["Contact", "contact"],
 ] as const;
 
@@ -820,10 +822,13 @@ function Leadership() {
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {leadership.map((l, i) => (
           <Reveal key={l.org} delay={(i % 3) * 0.06}>
-            <div className="comic-card flex h-full flex-col gap-1 rounded-lg border border-border bg-card p-4">
+            <div className="comic-card flex h-full flex-col gap-1.5 rounded-lg border border-border bg-card p-4">
               <h3 className="font-serif text-sm font-bold">{l.role}</h3>
               <p className="text-xs text-primary">{l.org}</p>
               <p className="text-xs text-muted-foreground">{l.period}</p>
+              <p className="mt-1 text-xs leading-relaxed text-muted-foreground">
+                {l.description}
+              </p>
             </div>
           </Reveal>
         ))}

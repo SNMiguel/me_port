@@ -55,6 +55,7 @@ export interface LeadershipItem {
   role: string;
   org: string;
   period: string;
+  description: string;
 }
 
 export interface Achievement {
@@ -229,28 +230,6 @@ export const experience: ExperienceItem[] = [
     ],
   },
   {
-    org: "Grambling State University",
-    role: "Residential Assistant",
-    start: "Jul 2025",
-    end: "Present",
-    location: "Grambling, LA",
-    highlights: [
-      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester, increasing participation by 60%.",
-      "Primary point of contact between housing administration and a diverse student population.",
-    ],
-  },
-  {
-    org: "Propel2Excel",
-    role: "Fellow",
-    start: "Sep 2025",
-    end: "Present",
-    location: "Remote",
-    highlights: [
-      "Selected for a competitive career-development fellowship with mentorship from industry leaders.",
-      "Built a professional network across tech, finance, and consulting.",
-    ],
-  },
-  {
     org: "HBCU First",
     role: "Day-One-Ready Academy Intern",
     start: "Sep 2025",
@@ -281,17 +260,6 @@ export const experience: ExperienceItem[] = [
     highlights: [
       "Built two AI-driven solutions: a stock-price predictor (R² 0.79) and the PlantGuard-AI classifier (95% accuracy over 54K+ images) via transfer learning with scikit-learn, TensorFlow, and PyTorch.",
       "Designed ML pipelines with 18 technical indicators, reducing RMSE to $2.01 while processing 1,000+ daily API calls.",
-    ],
-  },
-  {
-    org: "Thurgood Marshall College Fund",
-    role: "TMCF × Citi Scholar",
-    start: "Nov 2024",
-    end: "May 2025",
-    location: "New York, NY",
-    highlights: [
-      "Selected as 1 of 100 HBCU students nationwide for a competitive scholars program.",
-      "Completed an immersive 5-day bootcamp at Citi's NYC office with 10+ Citi professionals.",
     ],
   },
 ];
@@ -389,10 +357,55 @@ export const certifications: Certification[] = [
 ];
 
 export const leadership: LeadershipItem[] = [
-  { role: "Active Member", org: "ColorStack", period: "Sep 2024 – Present" },
-  { role: "Active Member", org: "National Society of Black Engineers (NSBE)", period: "Nov 2024 – Present" },
-  { role: "Louisiana Student Ambassador", org: "The Lantern Network", period: "Jan 2025 – Present" },
-  { role: "Member", org: "Alpha Lambda Delta Honors Society", period: "Mar 2025 – Present" },
+  {
+    role: "Residential Assistant",
+    org: "Grambling State University",
+    period: "Jul 2025 – Present",
+    description:
+      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester, increasing participation by 60%. Serve as the primary liaison between housing administration and a diverse student population.",
+  },
+  {
+    role: "Fellow",
+    org: "Propel2Excel",
+    period: "Sep 2025 – Present",
+    description:
+      "Selected for a competitive career-development fellowship with mentorship from industry leaders, building a professional network across tech, finance, and consulting through structured workshops and speaker sessions.",
+  },
+  {
+    role: "TMCF x Citi Scholar",
+    org: "Thurgood Marshall College Fund",
+    period: "Nov 2024 – May 2025",
+    description:
+      "Selected as 1 of 100 HBCU students nationwide for the competitive TMCF-Citi Scholars Program. Completed a 5-day immersive bootcamp at Citi's NYC office with 10+ Citi professionals, gaining corporate exposure and finance industry insight.",
+  },
+  {
+    role: "Active Member",
+    org: "ColorStack",
+    period: "Sep 2024 – Present",
+    description:
+      "Part of a national community advancing Black and Latinx representation in tech, engaging in professional-development workshops, mentorship programs, and networking with industry leaders.",
+  },
+  {
+    role: "Active Member",
+    org: "National Society of Black Engineers (NSBE)",
+    period: "Nov 2024 – Present",
+    description:
+      "Member of NSBE, participating in technical development, networking, and initiatives that support the academic and professional success of Black engineers and STEM students.",
+  },
+  {
+    role: "Louisiana Student Ambassador",
+    org: "The Lantern Network",
+    period: "Jan 2025 – Present",
+    description:
+      "Represent The Lantern Network as a student ambassador, connecting peers with mentorship and professional opportunities and promoting the network across Louisiana campuses.",
+  },
+  {
+    role: "Member",
+    org: "Alpha Lambda Delta Honors Society",
+    period: "Mar 2025 – Present",
+    description:
+      "Member of the national honor society recognizing outstanding academic achievement among first-year college students.",
+  },
 ];
 
 export const achievements: Achievement[] = [
