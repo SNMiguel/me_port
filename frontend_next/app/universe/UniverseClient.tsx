@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { OrbitControls, Stars, Html } from "@react-three/drei";
 import * as THREE from "three";
+import Effects from "./effects/Effects";
 import type {
   Project,
   ExperienceItem,
@@ -40,6 +41,9 @@ interface Props {
   profile: Profile;
 }
 
+// TEMP debug flag — set false to render the scene without postprocessing.
+const ENABLE_EFFECTS = false;
+
 const SKILL_GROUPS = [
   { key: "aiml", label: "AI / ML" },
   { key: "frameworks", label: "Full-Stack" },
@@ -51,6 +55,7 @@ export default function UniverseClient(props: Props) {
   const [webglOk, setWebglOk] = useState<boolean | null>(null);
   const [selected, setSelected] = useState<SceneNode | null>(null);
   const [reduceMotion, setReduceMotion] = useState(false);
+  const [comic, setComic] = useState(true);
 
   useEffect(() => {
     // WebGL capability check — graceful fallback if unsupported (spec §19).
@@ -65,6 +70,10 @@ export default function UniverseClient(props: Props) {
     setReduceMotion(
       window.matchMedia("(prefers-reduced-motion: reduce)").matches
     );
+    // Performance heuristic (spec §19): default the comic layer ON only on
+    // capable hardware; weaker devices start plain and can opt in via toggle.
+    const cores = navigator.hardwareConcurrency ?? 4;
+    setComic(cores >= 8);
   }, []);
 
   const nodes = useMemo(
@@ -95,12 +104,22 @@ export default function UniverseClient(props: Props) {
             selected={selected}
             onSelect={setSelected}
             reduceMotion={reduceMotion}
+            comic={comic}
           />
         </Canvas>
       )}
 
       {/* ---- 2D overlay UI ---- */}
       <TopBar />
+      {webglOk && ENABLE_EFFECTS && (
+        <button
+          onClick={() => setComic((v) => !v)}
+          className="absolute bottom-5 right-5 z-10 rounded-full border border-white/15 bg-[var(--deep-space)]/70 px-4 py-2 text-xs font-medium text-white/80 backdrop-blur transition-colors hover:border-[var(--soft-gold)] hover:text-white"
+          title="Toggle the comic shader treatment (spec §5.1)"
+        >
+          Comic mode: {comic ? "On" : "Off"}
+        </button>
+      )}
       {!selected && <Legend />}
       {selected && (
         <DetailPanel
@@ -126,11 +145,13 @@ function SceneContents({
   selected,
   onSelect,
   reduceMotion,
+  comic,
 }: {
   nodes: SceneNode[];
   selected: SceneNode | null;
   onSelect: (n: SceneNode | null) => void;
   reduceMotion: boolean;
+  comic: boolean;
 }) {
   const controls = useRef<React.ComponentRef<typeof OrbitControls>>(null);
 
@@ -185,6 +206,9 @@ function SceneContents({
         selected={selected}
         reduceMotion={reduceMotion}
       />
+
+      {/* TEMP: ENABLE_EFFECTS=false isolates whether postprocessing crashes */}
+      {ENABLE_EFFECTS && <Effects comic={comic} reduceMotion={reduceMotion} />}
     </>
   );
 }

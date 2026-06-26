@@ -1,4 +1,4 @@
-import UniverseClient from "./UniverseClient";
+import UniverseExperience from "./UniverseExperience";
 import {
   projects,
   experience,
@@ -19,7 +19,7 @@ export const metadata = {
 
 export default function UniverseMode() {
   return (
-    <UniverseClient
+    <UniverseExperience
       projects={projects}
       experience={experience}
       education={education}
