@@ -1,47 +1,215 @@
 @import "tailwindcss";
 
 /*
- * LOCKED PALETTE — MIGUEL_UNIVERSE_SPEC §4. No other hues enter the palette.
+ * MILES MORALES theme — black-suit base, spider-red + electric venom-blast
+ * blue/cyan accents, with a subtle comic halftone texture. Dark by default
+ * (:root); .light is the optional lighter variant.
  */
 :root {
-  --deep-space: #060812; /* primary background: near-black, slightly blue */
-  --deep-space-2: #0b0f1f; /* raised surfaces / cards */
-  --electric-blue: #4f8cff; /* primary rim light / AI projects */
-  --purple-nebula: #a855f7; /* ambient glow / ML visuals */
-  --emerald: #10b981; /* secondary accent / data projects */
-  --soft-gold: #f5c451; /* highlights, CTAs, hover states */
-  --white: #ffffff; /* text, star points, fine detail */
+  /* "What's Up Danger" sunset duotone — magenta-pink + cyan on purple-black */
+  --background: 270 38% 7%;
+  --foreground: 300 15% 97%;
+  --card: 270 30% 11%;
+  --card-foreground: 300 15% 97%;
+  --primary: 335 85% 60%; /* sunset magenta-pink */
+  --primary-foreground: 0 0% 100%;
+  --accent: 190 92% 55%; /* venom-blast cyan */
+  --accent-foreground: 270 38% 7%;
+  --secondary: 270 22% 16%;
+  --secondary-foreground: 300 12% 95%;
+  --muted: 270 18% 17%;
+  --muted-foreground: 280 10% 68%;
+  --border: 280 24% 22%;
+  --radius: 0.5rem;
+}
 
-  --background: var(--deep-space);
-  --foreground: var(--white);
+.light {
+  /* Tinted lavender canvas so empty space has colour; white cards pop on top. */
+  --background: 290 38% 89%;
+  --foreground: 280 35% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 280 35% 12%;
+  --primary: 335 78% 48%;
+  --primary-foreground: 0 0% 100%;
+  --accent: 196 90% 38%;
+  --accent-foreground: 0 0% 100%;
+  --secondary: 292 30% 84%;
+  --secondary-foreground: 280 28% 20%;
+  --muted: 292 24% 86%;
+  --muted-foreground: 280 12% 36%;
+  --border: 290 24% 76%;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --color-deep-space: var(--deep-space);
-  --color-deep-space-2: var(--deep-space-2);
-  --color-electric-blue: var(--electric-blue);
-  --color-purple-nebula: var(--purple-nebula);
-  --color-emerald: var(--emerald);
-  --color-soft-gold: var(--soft-gold);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-border: hsl(var(--border));
+
+  --font-sans: var(--font-inter);
+  --font-serif: var(--font-playfair);
+  --font-mono: var(--font-jetbrains);
+}
+
+* {
+  border-color: hsl(var(--border));
 }
 
 body {
-  background: var(--deep-space);
-  color: var(--white);
-  font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-inter), system-ui, sans-serif;
+  /* Subtle Spider-Verse halftone dot texture. */
+  background-image: radial-gradient(
+    hsl(var(--primary) / 0.06) 1px,
+    transparent 1px
+  );
+  background-size: 22px 22px;
 }
 
-/* Accessibility: respect reduced motion (spec §18). */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Comic-style accent helpers */
+.text-gradient-spider {
+  background: linear-gradient(
+    100deg,
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Infinite marquee for the organizations strip */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee 38s linear infinite;
+}
+
+/* Spider-Verse chromatic glitch — pink/cyan channel split on hover */
+@keyframes spider-glitch {
+  0%,
+  100% {
+    text-shadow: -2px 0 hsl(var(--primary)), 2px 0 hsl(var(--accent));
+    transform: translate(0, 0);
+  }
+  20% {
+    text-shadow: -3px -1px hsl(var(--primary)), 3px 1px hsl(var(--accent));
+    transform: translate(1px, -1px);
+  }
+  40% {
+    text-shadow: 2px 0 hsl(var(--primary)), -2px 0 hsl(var(--accent));
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    text-shadow: -2px 1px hsl(var(--primary)), 2px -1px hsl(var(--accent));
+  }
+  80% {
+    text-shadow: 1px -1px hsl(var(--primary)), -1px 1px hsl(var(--accent));
+    transform: translate(1px, 0);
+  }
+}
+.spider-glitch:hover {
+  animation: spider-glitch 0.45s steps(2) infinite;
+}
+
+/* One-shot glitch when a section title scrolls into view */
+.glitch-in {
+  animation: spider-glitch 0.4s steps(2) 3;
+}
+
+/* Spider-sense pulse (avatar glow) */
+@keyframes spider-sense {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.08);
+  }
+}
+.animate-spider-sense {
+  animation: spider-sense 2.6s ease-in-out infinite;
+}
+
+/* Comic card: hover lift + accent border + halftone flash */
+.comic-card {
+  position: relative;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.comic-card:hover {
+  transform: translateY(-4px);
+  border-color: hsl(var(--primary));
+  box-shadow: 0 12px 30px -12px hsl(var(--primary) / 0.5);
+}
+.comic-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+  background-image: radial-gradient(hsl(var(--accent) / 0.25) 1px, transparent 1px);
+  background-size: 9px 9px;
+}
+.comic-card:hover::after {
+  opacity: 1;
+}
+
+/* Gentle bounce for the hero scroll cue */
+@keyframes bounce-down {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8px);
+  }
+}
+.animate-bounce-down {
+  animation: bounce-down 2s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee,
+  .animate-bounce-down,
+  .animate-spider-sense,
+  .glitch-in,
+  .spider-glitch:hover {
+    animation: none !important;
+  }
+  .comic-card:hover {
+    transform: none;
+  }
   *,
   *::before,
   *::after {
     animation-duration: 0.001ms !important;
-    animation-iteration-count: 1 !important;
     transition-duration: 0.001ms !important;
   }
 }

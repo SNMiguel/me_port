@@ -80,7 +80,7 @@ export const profile: Profile = {
   brand: "My Universe",
   role: "AI + Automation @ One37 Solutions · CS + Cybersecurity @ Grambling State",
   valueProp:
-    "I build AI/ML and automation systems end to end — from voice-biometric models and reasoning agents to autonomous daemons and full-stack apps.",
+    "I build AI/ML and automation systems end to end, from voice-biometric models and reasoning agents to autonomous daemons and full-stack apps.",
   // Primary contact: durable Gmail (won't expire after graduation). School
   // email on file is smiguel@gsumail.gram.edu.
   email: "shemamiguel2023@gmail.com",
@@ -100,7 +100,7 @@ export const projects: Project[] = [
     name: "Vocalyx",
     tagline: "Voice biometric auth + anti-spoofing MVP, shipped live in 11 days.",
     description:
-      "A full-stack voice biometric authentication and anti-spoofing system. Built a multi-stage inference pipeline fusing ECAPA-TDNN speaker verification, a Wav2Vec2 deepfake classifier, a custom spectral replay detector, and Whisper-powered challenge-response liveness into a single adaptive decision layer. Shipped as a deployed MVP — React frontend on Vercel, FastAPI backend via Cloudflare Tunnel.",
+      "A full-stack voice biometric authentication and anti-spoofing system. Built a multi-stage inference pipeline fusing ECAPA-TDNN speaker verification, a Wav2Vec2 deepfake classifier, a custom spectral replay detector, and Whisper-powered challenge-response liveness into a single adaptive decision layer. Shipped as a deployed MVP, with a React frontend on Vercel and a FastAPI backend via Cloudflare Tunnel.",
     tech: [
       "Python",
       "FastAPI",
@@ -187,7 +187,7 @@ export const projects: Project[] = [
     name: "R Cryptocurrency Trading Bot",
     tagline: "End-to-end algorithmic trading system in R (~4,200 lines, 5 weeks).",
     description:
-      "An end-to-end algorithmic trading system built from scratch in R — data acquisition, technical analysis, strategy execution, backtesting, risk management, and paper trading (~4,200 lines across 18 files). Implements 10+ technical indicators (RSI, MACD, SMA/EMA, Bollinger Bands, volume) and multiple strategies (Moving Average Crossover, RSI Mean Reversion) on an extensible base-strategy template.",
+      "An end-to-end algorithmic trading system built from scratch in R, covering data acquisition, technical analysis, strategy execution, backtesting, risk management, and paper trading (~4,200 lines across 18 files). Implements 10+ technical indicators (RSI, MACD, SMA/EMA, Bollinger Bands, volume) and multiple strategies (Moving Average Crossover, RSI Mean Reversion) on an extensible base-strategy template.",
     tech: ["R", "tidyverse", "TTR", "ggplot2", "CryptoCompare API"],
     domain: "data-automation",
     flagship: false,
@@ -236,7 +236,7 @@ export const experience: ExperienceItem[] = [
     end: "Present",
     location: "Grambling, LA",
     highlights: [
-      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester — increasing participation by 60%.",
+      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester, increasing participation by 60%.",
       "Primary point of contact between housing administration and a diverse student population.",
     ],
   },
@@ -305,9 +305,17 @@ export const education: EducationItem[] = [
     honors: ["Presidential Scholarship", "2× Dean's List", "Alpha Lambda Delta Honors"],
     coursework: [
       "Data Structures & Algorithms",
+      "Discrete Structures",
       "Software Engineering",
-      "Probability & Statistics",
+      "Computer Organization & Architecture",
+      "Computer Science I & II",
+      "Foundations of Cybersecurity",
+      "Information Assurance & Security",
+      "Social, Legal & Ethical Issues in Computing",
+      "Probability & Statistics I",
       "Calculus I & II",
+      "General Physics I & II",
+      "Intro to Technical Writing",
     ],
   },
 ];
@@ -389,8 +397,8 @@ export const leadership: LeadershipItem[] = [
 ];
 
 export const achievements: Achievement[] = [
-  { title: "Notion Hackathon — 1st Runner-Up", description: "Built TaskFlow, an AI-powered task planning hub integrating Notion databases.", date: "Nov 2024" },
-  { title: "Amazon Nova Hackathon — Participant", description: "Built Sign Language Bridge, a real-time ASL communication platform.", date: "Feb 2026" },
+  { title: "Notion Hackathon: 1st Runner-Up", description: "Built TaskFlow, an AI-powered task planning hub integrating Notion databases.", date: "Nov 2024" },
+  { title: "Amazon Nova Hackathon Participant", description: "Built Sign Language Bridge, a real-time ASL communication platform.", date: "Feb 2026" },
   { title: "Presidential Scholarship", description: "Full merit-based scholarship to Grambling State University.", date: "Aug 2024" },
 ];
 
