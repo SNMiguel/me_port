@@ -945,13 +945,28 @@ function Resume() {
             </a>
           </div>
 
-          {/* Inline preview (hidden on small screens) */}
-          <div className="hidden w-full max-w-3xl overflow-hidden rounded-lg border border-border bg-card sm:block">
-            <iframe
-              src={`${profile.resumeUrl}#view=FitH`}
-              title="Miguel Ngabonziza resume"
-              className="h-[80vh] w-full"
-            />
+          {/* Inline preview in a themed window frame (hidden on small screens).
+              Sized to the page aspect ratio so the single page fits with no
+              internal PDF scrollbar (which the browser plugin won't let us style). */}
+          <div className="hidden w-full max-w-3xl sm:block">
+            <div className="rounded-2xl bg-gradient-to-br from-primary to-accent p-[2px] shadow-[0_0_45px_-12px_hsl(var(--primary)/0.6)]">
+              <div className="overflow-hidden rounded-2xl bg-card">
+                {/* window chrome bar */}
+                <div className="flex items-center gap-2 border-b border-border bg-background/60 px-4 py-2.5">
+                  <span className="h-3 w-3 rounded-full bg-primary" />
+                  <span className="h-3 w-3 rounded-full bg-accent" />
+                  <span className="h-3 w-3 rounded-full bg-muted-foreground/40" />
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">
+                    Miguel-Ngabonziza-Resume.pdf
+                  </span>
+                </div>
+                <iframe
+                  src={`${profile.resumeUrl}#toolbar=0&navpanes=0&scrollbar=0&view=FitH`}
+                  title="Miguel Ngabonziza resume"
+                  className="aspect-[8.5/11] w-full bg-white"
+                />
+              </div>
+            </div>
           </div>
         </div>
       </Reveal>

@@ -80,6 +80,40 @@ html {
   scroll-behavior: smooth;
 }
 
+/* Aesthetic Miles-themed scrollbar (pink → cyan gradient thumb).
+   Firefox only: the standard props would otherwise make Chrome 121+ ignore the
+   ::-webkit gradient rules below, so scope them to non-webkit browsers. */
+@supports not selector(::-webkit-scrollbar) {
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--primary)) transparent;
+  }
+}
+::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 9999px;
+  border: 3px solid hsl(var(--background));
+  background: linear-gradient(
+    hsl(var(--primary)),
+    hsl(var(--accent))
+  );
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(
+    hsl(var(--accent)),
+    hsl(var(--primary))
+  );
+}
+::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
 /* Comic-style accent helpers */
 .text-gradient-spider {
   background: linear-gradient(
