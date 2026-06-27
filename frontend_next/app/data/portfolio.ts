@@ -87,7 +87,7 @@ export const profile: Profile = {
   email: "shemamiguel2023@gmail.com",
   phone: "(318) 516-4769",
   location: "Grambling, LA",
-  resumeUrl: "", // TODO
+  resumeUrl: "/Miguel-Ngabonziza-Resume.pdf",
   socials: [
     { label: "GitHub", href: "https://github.com/SNMiguel" },
     { label: "LinkedIn", href: "https://linkedin.com/in/migztech" },
@@ -213,6 +213,16 @@ export const projects: Project[] = [
     flagship: false,
     github: "https://github.com/Savoir-Tech/sign-language-bridge",
   },
+  {
+    id: "task-flow",
+    name: "Task-Flow",
+    tagline: "AI task-planning hub synced with Notion (Hackathon 2nd place).",
+    description:
+      "An AI-powered task planning hub that helps users plan schedules around deadlines and sync their tasks with Notion for progress tracking. Built with a team at the Notion x Grambling Hackathon, where it placed 2nd (1st runner-up); I built the GUI to deliver a smooth user experience.",
+    tech: ["JavaScript", "Notion API", "AI", "OAuth 2.0"],
+    domain: "hackathon",
+    flagship: false,
+  },
 ];
 
 export const flagshipProjects = projects.filter((p) => p.flagship);
@@ -297,45 +307,59 @@ export const skills = {
     "C++",
     "R",
     "SQL",
-    "HTML/CSS",
     "Kotlin",
+    "HTML/CSS",
   ],
   frameworks: [
     "React",
     "Next.js",
-    "FastAPI",
     "Node.js",
-    "TensorFlow",
+    "FastAPI",
+    "Vite",
     "PyTorch",
+    "TensorFlow",
+    "Keras",
+  ],
+  libraries: [
     "scikit-learn",
+    "Hugging Face Transformers",
+    "SpeechBrain",
     "NumPy",
     "Pandas",
-    "Keras",
-    "Vite",
-  ],
-  tools: [
-    "Git",
-    "Docker",
-    "Linux",
-    "AWS",
-    "Vercel",
-    "Cloudflare Tunnel",
-    "SQLite",
-    "Playwright",
-    "Jupyter",
+    "Matplotlib",
+    "OpenCV",
+    "tidyverse",
+    "ggplot2",
+    "TTR",
+    "yfinance",
   ],
   aiml: [
-    "Machine Learning",
     "Deep Learning",
     "Computer Vision",
     "Transfer Learning",
     "LLM Integration",
-    "Agentic AI",
     "RAG",
+    "Agentic AI",
+    "Prompt Engineering",
     "Voice Biometrics",
     "Speaker Verification",
     "Anti-Spoofing / Deepfake Detection",
   ],
+  tools: [
+    "Git",
+    "GitHub",
+    "Docker",
+    "Linux",
+    "VS Code",
+    "Jupyter",
+    "Android Studio",
+    "Playwright",
+    "AWS",
+    "Vercel",
+    "Cloudflare Tunnel",
+    "RStudio",
+  ],
+  databases: ["SQLite", "DynamoDB"],
   spokenLanguages: [
     "English (fluent)",
     "French (fluent)",
@@ -358,11 +382,11 @@ export const certifications: Certification[] = [
 
 export const leadership: LeadershipItem[] = [
   {
-    role: "Residential Assistant",
-    org: "Grambling State University",
-    period: "Jul 2025 – Present",
+    role: "SWE Summer Academy Fellow",
+    org: "LinkedinorLeftout (LILO)",
+    period: "Jun 2026 – Aug 2026",
     description:
-      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester, increasing participation by 60%. Serve as the primary liaison between housing administration and a diverse student population.",
+      "Accepted into LILO's competitive 12-week SWE Summer Academy focused on data structures, algorithms, and technical interview preparation, building full-stack projects and preparing for fall software-engineering internship recruiting alongside the cohort.",
   },
   {
     role: "Fellow",
@@ -370,6 +394,48 @@ export const leadership: LeadershipItem[] = [
     period: "Sep 2025 – Present",
     description:
       "Selected for a competitive career-development fellowship with mentorship from industry leaders, building a professional network across tech, finance, and consulting through structured workshops and speaker sessions.",
+  },
+  {
+    role: "Residential Assistant",
+    org: "Grambling State University",
+    period: "Jul 2025 – Present",
+    description:
+      "Lead a residential community of 30+ students with weekly check-ins, conflict resolution, and 5+ events per semester, increasing participation by 60%. Serve as the primary liaison between housing administration and a diverse student population.",
+  },
+  {
+    role: "Apprentice (Region 4)",
+    org: "HBCU 20x20 | The Application",
+    period: "Jun 2025",
+    description:
+      "Selected for the Apprenticeship Universe (Region 4) program by HBCU 20x20 | The Application, gaining insight into apprenticeship opportunities, building new skills, and connecting with professionals and fellow students to expand career pathways.",
+  },
+  {
+    role: "CLRM Roundtable Mentee",
+    org: "The Lantern Network",
+    period: "Apr 2025",
+    description:
+      "Selected as a mentee to attend the CLRM Roundtable Conference in Denver, representing Grambling State University. Engaged with construction-finance leaders on risk management and regulatory strategy through the lens of technology, cybersecurity, and innovation, with side workshops in AI and Quantum Computing.",
+  },
+  {
+    role: "Member",
+    org: "Alpha Lambda Delta Honors Society",
+    period: "Mar 2025 – Present",
+    description:
+      "Member of the national honor society recognizing outstanding academic achievement among first-year college students.",
+  },
+  {
+    role: "Louisiana Student Ambassador",
+    org: "The Lantern Network",
+    period: "Jan 2025 – Present",
+    description:
+      "Represent The Lantern Network as a student ambassador, connecting peers with mentorship and professional opportunities and promoting the network across Louisiana campuses.",
+  },
+  {
+    role: "Active Member",
+    org: "National Society of Black Engineers (NSBE)",
+    period: "Nov 2024 – Present",
+    description:
+      "Member of NSBE, participating in technical development, networking, and initiatives that support the academic and professional success of Black engineers and STEM students.",
   },
   {
     role: "TMCF x Citi Scholar",
@@ -384,27 +450,6 @@ export const leadership: LeadershipItem[] = [
     period: "Sep 2024 – Present",
     description:
       "Part of a national community advancing Black and Latinx representation in tech, engaging in professional-development workshops, mentorship programs, and networking with industry leaders.",
-  },
-  {
-    role: "Active Member",
-    org: "National Society of Black Engineers (NSBE)",
-    period: "Nov 2024 – Present",
-    description:
-      "Member of NSBE, participating in technical development, networking, and initiatives that support the academic and professional success of Black engineers and STEM students.",
-  },
-  {
-    role: "Louisiana Student Ambassador",
-    org: "The Lantern Network",
-    period: "Jan 2025 – Present",
-    description:
-      "Represent The Lantern Network as a student ambassador, connecting peers with mentorship and professional opportunities and promoting the network across Louisiana campuses.",
-  },
-  {
-    role: "Member",
-    org: "Alpha Lambda Delta Honors Society",
-    period: "Mar 2025 – Present",
-    description:
-      "Member of the national honor society recognizing outstanding academic achievement among first-year college students.",
   },
 ];
 

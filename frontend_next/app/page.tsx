@@ -13,6 +13,8 @@ import {
   Award,
   Users,
   Mail,
+  FileText,
+  Download,
   ChevronDown,
   Sun,
   Moon,
@@ -44,15 +46,18 @@ const NAV = [
   ["Skills", "skills"],
   ["Leadership", "leadership"],
   ["Certifications", "certifications"],
+  ["Resume", "resume"],
   ["Contact", "contact"],
 ] as const;
 
 const SKILL_GROUPS: { label: string; key: keyof typeof skills }[] = [
-  { label: "AI / ML", key: "aiml" },
   { label: "Languages", key: "languages" },
   { label: "Frameworks", key: "frameworks" },
-  { label: "Tools", key: "tools" },
-  { label: "Spoken", key: "spokenLanguages" },
+  { label: "Libraries", key: "libraries" },
+  { label: "AI / ML", key: "aiml" },
+  { label: "Developer Tools", key: "tools" },
+  { label: "Databases", key: "databases" },
+  { label: "Spoken Languages", key: "spokenLanguages" },
 ];
 
 export default function Home() {
@@ -73,6 +78,8 @@ export default function Home() {
       <Leadership />
       <WebDivider />
       <Certifications />
+      <WebDivider />
+      <Resume />
       <WebDivider />
       <Contact />
       <Footer />
@@ -468,7 +475,7 @@ function Hero() {
           transition={{ duration: 0.7, delay: 0.4 }}
           className="flex flex-wrap items-center justify-center gap-2"
         >
-          {["One37 Solutions", "TMCF × Citi", "PwC", "Grambling State"].map(
+          {["One37 Solutions", "Grambling State"].map(
             (c) => (
               <span
                 key={c}
@@ -743,15 +750,16 @@ function ProjectCard({ project }: { project: Project }) {
 function Skills() {
   return (
     <Section id="skills">
-      <SectionTitle icon={Wrench} title="Skills" />
+      <SectionTitle icon={Wrench} title="Technical Skills" />
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
         {SKILL_GROUPS.map((g, i) => (
           <Reveal key={g.key} delay={(i % 3) * 0.08}>
             <div className="comic-card flex h-full flex-col gap-3 rounded-lg border border-border bg-card p-5">
-              <h3 className="font-serif text-base font-bold text-primary">
+              <h3 className="flex items-center gap-2 font-serif text-lg font-bold text-primary">
+                <span className="h-4 w-1 rounded-full bg-gradient-to-b from-primary to-accent" />
                 {g.label}
               </h3>
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-2">
                 {skills[g.key].map((s) => (
                   <Tag key={s}>{s}</Tag>
                 ))}
@@ -818,10 +826,10 @@ function Education() {
 function Leadership() {
   return (
     <Section id="leadership">
-      <SectionTitle icon={Users} title="Leadership" />
+      <SectionTitle icon={Users} title="Leadership & Involvement" />
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {leadership.map((l, i) => (
-          <Reveal key={l.org} delay={(i % 3) * 0.06}>
+          <Reveal key={`${l.org}-${l.role}`} delay={(i % 3) * 0.06}>
             <div className="comic-card flex h-full flex-col gap-1.5 rounded-lg border border-border bg-card p-4">
               <h3 className="font-serif text-sm font-bold">{l.role}</h3>
               <p className="text-xs text-primary">{l.org}</p>
@@ -887,9 +895,10 @@ function Contact() {
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
               href={`mailto:${profile.email}`}
-              className="rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+              className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
             >
-              Email Me
+              <Mail className="h-4 w-4" />
+              {profile.email}
             </a>
             {profile.socials.map((s) => (
               <a
@@ -902,6 +911,47 @@ function Contact() {
                 {s.label}
               </a>
             ))}
+          </div>
+        </div>
+      </Reveal>
+    </Section>
+  );
+}
+
+function Resume() {
+  if (!profile.resumeUrl) return null;
+  return (
+    <Section id="resume">
+      <SectionTitle icon={FileText} title="Resume" />
+      <Reveal>
+        <div className="flex flex-col items-center gap-6">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <a
+              href={profile.resumeUrl}
+              target="_blank"
+              rel="noreferrer"
+              className="flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground transition-opacity hover:opacity-90"
+            >
+              <FileText className="h-4 w-4" />
+              View Resume
+            </a>
+            <a
+              href={profile.resumeUrl}
+              download
+              className="flex items-center gap-2 rounded-full border border-border px-5 py-2.5 text-sm font-medium transition-colors hover:border-primary"
+            >
+              <Download className="h-4 w-4" />
+              Download PDF
+            </a>
+          </div>
+
+          {/* Inline preview (hidden on small screens) */}
+          <div className="hidden w-full max-w-3xl overflow-hidden rounded-lg border border-border bg-card sm:block">
+            <iframe
+              src={`${profile.resumeUrl}#view=FitH`}
+              title="Miguel Ngabonziza resume"
+              className="h-[80vh] w-full"
+            />
           </div>
         </div>
       </Reveal>
